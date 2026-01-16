@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maisshipro Store</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="running-text-container">
+        <div class="scrolling-text">
+            SELAMAT DATANG DI WEBSITE MAISSHIPRO — TEMUKAN ITEM TERBAIKMU DI SINI — PRODUK TERMURAH HANYA DI SINI - BY ISN_PRO
+        </div>
+    </div>
+
+    <header>
+        <div class="photo-box">
+            <img src="https://api.deline.web.id/Qs2D0XYh4T.jpg" alt="Logo" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div class="store-name">Maisshipro</div>
+        <div class="menu-btn" onclick="toggleSidebar()">
+            <div></div><div></div><div></div>
+        </div>
+    </header>
+
+    <div id="sidebar">
+        <div class="close-btn" onclick="toggleSidebar()" style="align-self: flex-end; font-size: 30px; cursor: pointer;">&times;</div>
+        
+        <div class="sidebar-header" style="margin-bottom: 10px; text-align: center; width: 100%;">
+            <div class="photo-box sidebar-logo">
+                <img src="https://api.deline.web.id/Qs2D0XYh4T.jpg" alt="Logo" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <h2 style="font-size: 24px; margin-bottom: 15px;">MAISSHIPRO</h2>
+            <div class="sidebar-divider"></div>
+        </div>
+        
+        <button class="side-btn btn-blue-sidebar" onclick="goToShop()">
+            <span>Belanja</span> <i class="fas fa-shopping-bag"></i>
+        </button>
+
+        <button class="side-btn btn-blue-sidebar">
+            <span>Buy Otomatis <span class="coming-soon">Coming Soon</span></span> <i class="fas fa-robot"></i>
+        </button>
+
+        <div class="sidebar-divider"></div>
+
+        <button class="side-btn" onclick="toggleTheme()" id="btn-theme">
+            <span>Mode Tema</span> <i id="theme-icon" class="fas fa-sun"></i>
+        </button>
+
+        <button class="side-btn" onclick="toggleCalculator()">
+            <span>Kalkulator</span> <i class="fas fa-calculator"></i>
+        </button>
+
+        <button class="side-btn" onclick="toggleToolsMenu()">
+            <span>Tools</span> <i class="fas fa-toolbox"></i>
+        </button>
+
+        <button class="side-btn" onclick="toggleOwnerMenu()">
+            <span>Owner</span> <i id="owner-icon" class="fas fa-chevron-down rotate-icon"></i>
+        </button>
+        <div class="owner-options" id="owner-menu">
+            <a href="https://wa.me/628988685425" target="_blank"><i class="fab fa-whatsapp" style="color: #25D366;"></i> WhatsApp</a>
+            <a href="https://t.me/Isnxmahiru" target="_blank"><i class="fab fa-telegram" style="color: #0088cc;"></i> Telegram</a>
+            <a href="https://whatsapp.com/channel/0029VbC6pi35kg7Ai1UfVo0P" target="_blank"><i class="fas fa-star" style="color: #ffde00;"></i> Testimoni</a>
+        </div>
+        
+        <button class="side-btn" onclick="resetApp()" style="margin-top: 30px; background: #ff4444; color: white;">
+            <span>KEMBALI HALAMAN UTAMA</span> <i class="fas fa-sign-out-alt"></i>
+        </button>
+    </div>
+
+    <div class="overlay-bg" id="overlay" onclick="toggleSidebar()"></div>
+
+    <main>
+        <div id="landing-page">
+            <button class="btn-start" onclick="startProcess()">MULAI</button>
+        </div>
+
+        <div id="main-content">
+            <div class="content-box">
+                <h1 class="welcome-text">Welcome di store MAISSHIPRO</h1>
+                <p class="sub-text">Kami siap melayani 24jam jika kami tidak sibuk + kami fast respon ketika tidak sibuk</p>
+                
+                <div class="input-group">
+                    <label for="username">Nama</label>
+                    <input type="text" id="username" placeholder="Masukkan nama..." oninput="checkValidation()">
+                </div>
+
+                <div class="input-group">
+                    <label for="whatsapp">WhatsApp (wajib 628***)</label>
+                    <input type="number" id="whatsapp" placeholder="628123456789" oninput="checkValidation()">
+                </div>
+
+                <div class="input-group">
+                    <label>Daftar Produk</label>
+                    <div class="product-select-box" onclick="toggleProductList()">
+                        <span>Pilih Produk</span>
+                        <i id="main-product-icon" class="fas fa-chevron-down"></i>
+                    </div>
+                    <div id="product-container" style="display: none; animation: dropdownSlide 1s ease;"></div>
+                </div>
+
+                <div class="input-group">
+                    <label>Pesanan Anda</label>
+                    <div id="order-box" class="order-box">
+                        <span id="empty-msg" style="color: #999; font-size: 12px; font-style: italic; text-align: center; margin-top: 20px;">Belum ada pesanan...</span>
+                    </div>
+                </div>
+
+                <button id="btn-checkout" class="btn-checkout" onclick="openCheckoutModal()">Beli Produk</button>
+            </div>
+
+            <div class="notes-container">
+                <div class="input-group" style="margin-bottom: 0;">
+                    <label>Catatan</label>
+                    <div class="notes-box">
+                        1. Setiap selesai membeli, all trx no reff<br>
+                        2. Ketika trx mohon bersabar admin proses<br>
+                        3. Pembayaran menerima via dana, gopay, qris all pay
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="loading-overlay">
+        <div class="spinner"></div>
+        <div class="loading-text">MEMUAT</div>
+    </div>
+
+    <div id="custom-toast">Pesan berhasil disalin!</div>
+
+    <div id="calculator-modal" class="modal-overlay">
+        <div class="modal-box calculator-box">
+            <div class="calc-header">
+                <h3>Kalkulator</h3>
+                <span class="close-calc" onclick="toggleCalculator()">&times;</span>
+            </div>
+            <input type="text" id="calc-display" readonly>
+            <div class="calc-keys">
+                <button onclick="clearCalc()" class="key-ac">AC</button>
+                <button onclick="deleteLast()" class="key-del">DEL</button>
+                <button onclick="appendCalc('/')" class="key-op">/</button>
+                <button onclick="appendCalc('*')" class="key-op">x</button>
+                <button onclick="appendCalc('7')">7</button>
+                <button onclick="appendCalc('8')">8</button>
+                <button onclick="appendCalc('9')">9</button>
+                <button onclick="appendCalc('-')" class="key-op">-</button>
+                <button onclick="appendCalc('4')">4</button>
+                <button onclick="appendCalc('5')">5</button>
+                <button onclick="appendCalc('6')">6</button>
+                <button onclick="appendCalc('+')" class="key-op">+</button>
+                <button onclick="appendCalc('1')">1</button>
+                <button onclick="appendCalc('2')">2</button>
+                <button onclick="appendCalc('3')">3</button>
+                <button onclick="calculateResult()" class="key-eq" style="grid-row: span 2;">=</button>
+                <button onclick="appendCalc('0')" style="grid-column: span 2;">0</button>
+                <button onclick="appendCalc('.')">.</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="checkout-modal" class="modal-overlay">
+        <div class="modal-box">
+            <h3 class="modal-title">Konfirmasi Pembelian</h3>
+            <p style="margin-bottom: 20px;">Silakan kirim detail pesanan Anda melalui:</p>
+            <a href="#" id="link-wa" target="_blank" class="btn-modal btn-wa" onclick="handleWhatsAppClick()">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
+            <button onclick="handleTelegramOrder()" class="btn-modal btn-tele">
+                <i class="fab fa-telegram"></i> Telegram
+            </button>
+            <button class="btn-modal btn-cancel" onclick="closeCheckoutModal()">Batal</button>
+        </div>
+    </div>
+
+    <div id="tools-modal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="calc-header">
+                <h3>PILIH TOOLS</h3>
+                <span class="close-calc" onclick="toggleToolsMenu()">&times;</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 10px; max-height: 300px; overflow-y: auto;">
+                <button class="btn-modal btn-tool" onclick="openSpecificTool('Tiktok No Watermark')">
+                    <span>Tiktok No Watermark</span> <i class="fab fa-tiktok"></i>
+                </button>
+                <button class="btn-modal btn-tool" onclick="openSpecificTool('YTmp4')">
+                    <span>YTmp4</span> <i class="fas fa-video"></i>
+                </button>
+                <button class="btn-modal btn-tool" onclick="openSpecificTool('YTmp3')">
+                    <span>YTmp3</span> <i class="fas fa-music"></i>
+                </button>
+                <button class="btn-modal btn-tool" onclick="openSpecificTool('IQC')">
+                    <span>IQC</span> <i class="fas fa-search"></i>
+                </button>
+                <button class="btn-modal btn-tool" onclick="openSpecificTool('Tourl')">
+                    <span>Tourl</span> <i class="fas fa-link"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="active-tool-modal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="calc-header">
+                <h3 id="tool-title-display" style="font-size: 16px;">NAMA TOOL</h3>
+                <span class="close-calc" onclick="backToToolsMenu()">&times;</span>
+            </div>
+            
+            <div id="tool-content-area" style="margin-top: 10px;"></div>
+
+            <button class="btn-modal btn-cancel" onclick="backToToolsMenu()" style="margin-top: 20px;">
+                Kembali
+            </button>
+        </div>
+    </div>
+
+    <script src="settings.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
