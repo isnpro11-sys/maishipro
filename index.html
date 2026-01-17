@@ -116,6 +116,29 @@
                 </div>
 
                 <div class="input-group">
+                    <label>Sistem Transaksi</label>
+                    <div class="product-select-box" onclick="toggleSystemList()">
+                        <span id="system-display-text">Direct (Langsung ke owner)</span>
+                        <i id="system-icon" class="fas fa-chevron-down"></i>
+                    </div>
+                    
+                    <div id="system-options" class="product-dropdown">
+                        <div class="variant-item" onclick="selectSystem('direct')">
+                            <span>Direct (Langsung)</span> <i class="fas fa-arrow-right"></i>
+                        </div>
+                        <div class="variant-item" onclick="selectSystem('mc')">
+                            <span>MC / MM / Rekber</span> <i class="fas fa-shield-alt"></i>
+                        </div>
+                    </div>
+
+                    <div id="admin-input-box" style="display: none; margin-top: 10px; animation: dropdownSlide 0.5s ease;">
+                        <label style="font-size: 12px; color: var(--sub-text);">Nomor Admin (628...)</label>
+                        <input type="number" id="admin-number" placeholder="Contoh: 628123456789" oninput="checkValidation()">
+                    </div>
+
+                    <input type="hidden" id="system-value" value="direct">
+                </div>
+                <div class="input-group">
                     <label>Daftar Produk</label>
                     <div class="product-select-box" onclick="toggleProductList()">
                         <span>Pilih Produk</span>
