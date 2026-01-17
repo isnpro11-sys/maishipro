@@ -44,7 +44,37 @@ const productData = [
             { name: "Nokos Indonesia", price: 5000 },
             { name: "Nokos Kolombia", price: 7000 },
             { name: "Nokos Filipina", price: 7000 },
-            { name: "Nokos lainnya tanya pm", price: 0 }
+            { name: "Lainnya chat owner", price: 0 }
+        ]
+    },
+    {
+        name: "Robux pending 5-7h",
+        status: "open", 
+        variants: [
+            { name: "100 Robux", price: 13000 },
+            { name: "200 Robux", price: 26000 },
+            { name: "300 Robux", price: 39000 },
+            { name: "Lainnya chat owner", price: 0 }
+        ]
+    },
+    {
+        name: "Topup DM Free Fire",
+        status: "open", 
+        variants: [
+            { name: "100 DM", price: 13000 },
+            { name: "140 DM", price: 17500 },
+            { name: "210 DM", price: 25500 },
+            { name: "Lainnya chat owner", price: 0 }
+        ]
+    },
+    {
+        name: "Topup DM Mobile Legends",
+        status: "open", 
+        variants: [
+            { name: "5 DM", price: 2000 },
+            { name: "44 DM", price: 11000 },
+            { name: "100 DM", price: 26000 },
+            { name: "Lainnya chat owner", price: 0 }
         ]
     },
     {

@@ -65,6 +65,10 @@
             <span>Buy Otomatis <span class="coming-soon">Coming Soon</span></span> <i class="fas fa-robot"></i>
         </button>
 
+        <button class="side-btn btn-blue-sidebar" onclick="goToPayment()">
+            <span>Payment</span> <i class="fas fa-wallet"></i>
+        </button>
+
         <div class="sidebar-divider"></div>
 
         <button class="side-btn" onclick="toggleTheme()" id="btn-theme">
@@ -138,19 +142,28 @@
 
                     <input type="hidden" id="system-value" value="direct">
                 </div>
+                
                 <div class="input-group">
                     <label>Daftar Produk</label>
                     <div class="product-select-box" onclick="toggleProductList()">
                         <span>Pilih Produk</span>
                         <i id="main-product-icon" class="fas fa-chevron-down"></i>
                     </div>
-                    <div id="product-container" style="display: none; animation: dropdownSlide 1s ease;"></div>
+                    
+                    <div id="product-container-wrapper" style="display: none; animation: dropdownSlide 1s ease;">
+                        <div id="product-container">
+                            </div>
+                        <div id="product-pagination" class="pagination-container"></div>
+                    </div>
                 </div>
 
                 <div class="input-group">
                     <label>Pesanan Anda</label>
-                    <div id="order-box" class="order-box">
-                        <span id="empty-msg" style="color: #999; font-size: 12px; font-style: italic; text-align: center; margin-top: 20px;">Belum ada pesanan...</span>
+                    <div id="order-box-wrapper" class="order-box">
+                        <div id="order-list-container">
+                            <span id="empty-msg" style="color: #999; font-size: 12px; font-style: italic; text-align: center; margin-top: 20px; display: block;">Belum ada pesanan...</span>
+                            </div>
+                        <div id="order-pagination" class="pagination-container"></div>
                     </div>
                 </div>
 
@@ -158,16 +171,30 @@
             </div>
 
             <div class="notes-container">
-                <div class="input-group" style="margin-bottom: 0;">
+                <div class="input-group">
                     <label>Catatan</label>
                     <div class="notes-box">
                         1. Setiap selesai membeli, all trx no reff<br>
                         2. Ketika trx mohon bersabar admin proses<br>
-                        3. Pembayaran menerima via dana, gopay, qris all pay
+                        3. Jika menggunakan mc, wajib yang di kenal owner
+                    </div>
+                </div>
+
+                <div class="input-group" style="margin-top: 20px; margin-bottom: 0;">
+                    <label>Metode Pembayaran</label>
+                    <div class="payment-box">
+                        <div class="payment-logos">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/8/86/Gopay_logo.svg" alt="GoPay">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Logo_dana_blue.svg/512px-Logo_dana_blue.svg.png" alt="DANA">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Logo_QRIS.svg/512px-Logo_QRIS.svg.png" alt="QRIS">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div id="payment-content">
+            </div>
     </main>
 
     <div id="loading-overlay">
@@ -264,5 +291,6 @@
 
     <script src="settings.js"></script>
     <script src="script.js"></script>
+    <script src="payment.js"></script>
 </body>
 </html>
