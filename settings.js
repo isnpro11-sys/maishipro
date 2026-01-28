@@ -3,7 +3,7 @@
 const productData = [
     {
         name: "Sewa Bot Jaga Grub",
-        status: "close", // Gunakan 'open' atau 'close'.
+        status: "open", // Gunakan 'open' atau 'close'.
         variants: [
             { name: "1 hari", price: 1000 },
             { name: "2 hari", price: 2000 },
