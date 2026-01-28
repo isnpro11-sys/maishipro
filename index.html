@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Maisshipro Store - Jasa Bot, Website & Tools Gratis</title>
+
+    <meta name="description" content="Pusat layanan digital. Transaksi Aman & Terpercaya!">
+    <meta name="keywords" content="Maisshipro website terpercaya">
+    <meta name="author" content="Maisshipro (Isn_pro)">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://maisshipro.my.id"> 
+    <meta property="og:site_name" content="Maisshipro Store">
+    <meta property="og:title" content="Maisshipro - Website Termurah dan Terpercaya">
+    <meta property="og:description" content="Cari kebutuhan jb/hosting/WhatsApp? Cek di website kami saja disini! harga terjangkau yang tentunya amanah!">
+    
+    <meta property="og:image" content="https://api.deline.web.id/Tr7QIJLZwa.jpg">
+    <meta property="og:image:width" content="600">
+    <meta property="og:image:height" content="600">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Maisshipro Store">
+    <meta name="twitter:description" content="Layanan digital terpercaya">
+    <meta name="twitter:image" content="https://api.deline.web.id/Tr7QIJLZwa.jpg">
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="notification-area"></div>
+
+    <div class="running-text-container">
+        <div class="scrolling-text">
+            SELAMAT DATANG DI WEBSITE MAISSHIPRO — TEMUKAN ITEM TERBAIKMU DI SINI — PRODUK TERMURAH HANYA DI SINI - BY ISN_PRO
+        </div>
+    </div>
+
+    <header>
+        <div class="photo-box" onclick="openOwnerLogin()" style="cursor: pointer;">
+            <img src="https://api.deline.web.id/Tr7QIJLZwa.jpg" alt="Logo" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div class="store-name">Maisshipro</div>
+        <div class="menu-btn" onclick="toggleSidebar()">
+            <div></div><div></div><div></div>
+        </div>
+    </header>
+
+    <div id="sidebar">
+        <div class="close-btn" onclick="toggleSidebar()" style="align-self: flex-end; font-size: 30px; cursor: pointer;">&times;</div>
+        
+        <div class="sidebar-header" style="margin-bottom: 10px; text-align: center; width: 100%;">
+            <div class="photo-box sidebar-logo">
+                <img src="https://api.deline.web.id/Tr7QIJLZwa.jpg" alt="Logo" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <h2 style="font-size: 24px; margin-bottom: 15px;">MAISSHIPRO</h2>
+            <div class="sidebar-divider"></div>
+        </div>
+        
+        <button class="side-btn btn-blue-sidebar" onclick="goToShop()">
+            <span>Belanja</span> <i class="fas fa-shopping-bag"></i>
+        </button>
+
+        <button class="side-btn btn-blue-sidebar">
+            <span>Buy Otomatis <span class="coming-soon">Coming Soon</span></span> <i class="fas fa-robot"></i>
+        </button>
+
+        <button class="side-btn btn-blue-sidebar" onclick="goToPayment()">
+            <span>Payment</span> <i class="fas fa-wallet"></i>
+        </button>
+
+        <button class="side-btn btn-blue-sidebar" onclick="goToRipper()">
+            <span>Info Ripper</span> <i class="fas fa-user-slash"></i>
+        </button>
+
+        <div class="sidebar-divider"></div>
+
+        <button class="side-btn" onclick="toggleTheme()" id="btn-theme">
+            <span>Mode Tema</span> <i id="theme-icon" class="fas fa-sun"></i>
+        </button>
+
+        <button class="side-btn" onclick="toggleCalculator()">
+            <span>Kalkulator</span> <i class="fas fa-calculator"></i>
+        </button>
+
+        <button class="side-btn" onclick="toggleToolsMenu()">
+            <span>Tools</span> <i class="fas fa-toolbox"></i>
+        </button>
+
+        <button class="side-btn" onclick="toggleOwnerMenu()">
+            <span>Owner</span> <i id="owner-icon" class="fas fa-chevron-down rotate-icon"></i>
+        </button>
+        <div class="owner-options" id="owner-menu">
+            <a href="https://wa.me/628988685425" target="_blank"><i class="fab fa-whatsapp" style="color: #25D366;"></i> WhatsApp</a>
+            <a href="https://t.me/Isnxmahiru" target="_blank"><i class="fab fa-telegram" style="color: #0088cc;"></i> Telegram</a>
+            <a href="https://whatsapp.com/channel/0029VbC6pi35kg7Ai1UfVo0P" target="_blank"><i class="fas fa-star" style="color: #ffde00;"></i> Testimoni</a>
+        </div>
+        
+        <button class="side-btn" onclick="resetApp()" style="margin-top: 30px; background: #ff4444; color: white;">
+            <span>KEMBALI HALAMAN UTAMA</span> <i class="fas fa-sign-out-alt"></i>
+        </button>
+    </div>
+
+    <div class="overlay-bg" id="overlay" onclick="toggleSidebar()"></div>
+
+    <main>
+        <div id="landing-page">
+            <button class="btn-start" onclick="startProcess()">MULAI</button>
+        </div>
+
+        <div id="main-content">
+            <div class="content-box">
+                <h1 class="welcome-text">Welcome di store MAISSHIPRO</h1>
+                <p class="sub-text">Kami siap melayani 24jam jika kami tidak sibuk + kami fast respon ketika tidak sibuk</p>
+                
+                <div class="input-group">
+                    <label for="username">Nama</label>
+                    <input type="text" id="username" placeholder="Masukkan nama..." oninput="checkValidation()">
+                </div>
+
+                <div class="input-group">
+                    <label for="whatsapp">WhatsApp (wajib 628***)</label>
+                    <input type="number" id="whatsapp" placeholder="628123456789" oninput="checkValidation()">
+                </div>
+
+                <div class="input-group">
+                    <label>Sistem Transaksi</label>
+                    <div class="product-select-box" onclick="toggleSystemList()">
+                        <span id="system-display-text">Direct (Langsung ke owner)</span>
+                        <i id="system-icon" class="fas fa-chevron-down"></i>
+                    </div>
+                    
+                    <div id="system-options" class="product-dropdown">
+                        <div class="variant-item" onclick="selectSystem('direct')">
+                            <span>Direct (Langsung)</span> <i class="fas fa-arrow-right"></i>
+                        </div>
+                        <div class="variant-item" onclick="selectSystem('mc')">
+                            <span>MC / MM / Rekber</span> <i class="fas fa-shield-alt"></i>
+                        </div>
+                    </div>
+
+                    <div id="admin-input-box" style="display: none; margin-top: 10px; animation: dropdownSlide 0.5s ease;">
+                        <label style="font-size: 12px; color: var(--sub-text);">Nomor Admin (628...)</label>
+                        <input type="number" id="admin-number" placeholder="Contoh: 628123456789" oninput="checkValidation()">
+                    </div>
+
+                    <input type="hidden" id="system-value" value="direct">
+                </div>
+                
+                <div class="input-group">
+                    <label>Daftar Produk</label>
+                    <div class="product-select-box" onclick="toggleProductList()">
+                        <span>Pilih Produk</span>
+                        <i id="main-product-icon" class="fas fa-chevron-down"></i>
+                    </div>
+                    
+                    <div id="product-container-wrapper" style="display: none; animation: dropdownSlide 1s ease;">
+                        <div id="product-container"></div>
+                        <div id="product-pagination" class="pagination-container"></div>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Pesanan Anda</label>
+                    <div id="order-box-wrapper" class="order-box">
+                        <div id="order-list-container">
+                            <span id="empty-msg" style="color: #999; font-size: 12px; font-style: italic; text-align: center; margin-top: 20px; display: block;">Belum ada pesanan...</span>
+                        </div>
+                        <div id="order-pagination" class="pagination-container"></div>
+                    </div>
+                </div>
+
+                <button id="btn-checkout" class="btn-checkout" onclick="openCheckoutModal()">Beli Produk</button>
+            </div>
+
+            <div class="notes-container">
+                <div class="input-group">
+                    <label>Catatan</label>
+                    <div class="notes-box">
+                        1. Setiap selesai membeli, all trx no reff<br>
+                        2. Ketika trx mohon bersabar admin proses<br>
+                        3. Jika menggunakan mc, wajib yang di kenal owner
+                    </div>
+                </div>
+
+                <div class="input-group" style="margin-top: 20px; margin-bottom: 0;">
+                    <label>Metode Pembayaran</label>
+                    <div class="payment-box">
+                        <div class="payment-logos">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/8/86/Gopay_logo.svg" alt="GoPay">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Logo_dana_blue.svg/512px-Logo_dana_blue.svg.png" alt="DANA">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Logo_QRIS.svg/512px-Logo_QRIS.svg.png" alt="QRIS">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="payment-content"></div>
+
+        <div id="ripper-content"></div>
+    </main>
+
+    <div id="loading-overlay">
+        <div class="spinner"></div>
+        <div class="loading-text">MEMUAT</div>
+    </div>
+
+    <div id="calculator-modal" class="modal-overlay">
+        <div class="modal-box calculator-box">
+            <div class="calc-header">
+                <h3>Kalkulator</h3>
+                <span class="close-calc" onclick="toggleCalculator()">&times;</span>
+            </div>
+            <input type="text" id="calc-display" readonly>
+            <div class="calc-keys">
+                <button onclick="clearCalc()" class="key-ac">AC</button>
+                <button onclick="deleteLast()" class="key-del">DEL</button>
+                <button onclick="appendCalc('/')" class="key-op">/</button>
+                <button onclick="appendCalc('*')" class="key-op">x</button>
+                <button onclick="appendCalc('7')">7</button>
+                <button onclick="appendCalc('8')">8</button>
+                <button onclick="appendCalc('9')">9</button>
+                <button onclick="appendCalc('-')" class="key-op">-</button>
+                <button onclick="appendCalc('4')">4</button>
+                <button onclick="appendCalc('5')">5</button>
+                <button onclick="appendCalc('6')">6</button>
+                <button onclick="appendCalc('+')" class="key-op">+</button>
+                <button onclick="appendCalc('1')">1</button>
+                <button onclick="appendCalc('2')">2</button>
+                <button onclick="appendCalc('3')">3</button>
+                <button onclick="calculateResult()" class="key-eq" style="grid-row: span 2;">=</button>
+                <button onclick="appendCalc('0')" style="grid-column: span 2;">0</button>
+                <button onclick="appendCalc('.')">.</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="checkout-modal" class="modal-overlay">
+        <div class="modal-box">
+            <h3 class="modal-title">Konfirmasi Pembelian</h3>
+            <p style="margin-bottom: 20px;">Silakan kirim detail pesanan Anda melalui:</p>
+            <a href="#" id="link-wa" target="_blank" class="btn-modal btn-wa" onclick="handleWhatsAppClick()">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
+            <button onclick="handleTelegramOrder()" class="btn-modal btn-tele">
+                <i class="fab fa-telegram"></i> Telegram
+            </button>
+            <button class="btn-modal btn-cancel" onclick="closeCheckoutModal()">Batal</button>
+        </div>
+    </div>
+
+    <div id="tools-modal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="calc-header">
+                <h3>PILIH TOOLS</h3>
+                <span class="close-calc" onclick="toggleToolsMenu()">&times;</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 10px; max-height: 300px; overflow-y: auto;">
+                <button class="btn-modal btn-tool" onclick="openSpecificTool('Tiktok No Watermark')">
+                    <span>Tiktok No Watermark</span> <i class="fab fa-tiktok"></i>
+                </button>
+                <button class="btn-modal btn-tool" onclick="openSpecificTool('YTmp4')">
+                    <span>YTmp4</span> <i class="fas fa-video"></i>
+                </button>
+                <button class="btn-modal btn-tool" onclick="openSpecificTool('YTmp3')">
+                    <span>YTmp3</span> <i class="fas fa-music"></i>
+                </button>
+                <button class="btn-modal btn-tool" onclick="openSpecificTool('IQC')">
+                    <span>IQC</span> <i class="fas fa-search"></i>
+                </button>
+                <button class="btn-modal btn-tool" onclick="openSpecificTool('Remove Background')">
+                    <span>Hapus Latar Belakang</span> <i class="fas fa-eraser"></i>
+                </button>
+                <button class="btn-modal btn-tool" onclick="openSpecificTool('Tourl')">
+                    <span>Tourl</span> <i class="fas fa-link"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="active-tool-modal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="calc-header">
+                <h3 id="tool-title-display" style="font-size: 16px;">NAMA TOOL</h3>
+                <span class="close-calc" onclick="backToToolsMenu()">&times;</span>
+            </div>
+            
+            <div id="tool-content-area" style="margin-top: 10px;"></div>
+
+            <button class="btn-modal btn-cancel" onclick="backToToolsMenu()" style="margin-top: 20px;">
+                Kembali
+            </button>
+        </div>
+    </div>
+    
+    <div id="add-ripper-modal" class="modal-overlay">
+        <div class="modal-box" style="max-width: 450px; text-align: left;">
+            <div class="calc-header">
+                <h3>INFORMASI RIPPER</h3>
+                <span class="close-calc" onclick="closeAddRipperModal()">&times;</span>
+            </div>
+
+            <div id="ripper-local-loading" class="local-loader">
+                <div class="local-spinner"></div>
+                <p style="font-weight:bold; font-size:14px;">SEDANG MENGIRIM...</p>
+                <p style="font-size:11px; color:#666;">Mohon tunggu, jangan tutup halaman ini.</p>
+            </div>
+
+            <div id="ripper-form-content" style="overflow-y: auto; max-height: 70vh; padding-right: 5px;">
+                <label style="font-size: 12px; font-weight: bold;">Bukti Foto (Min 1, Max 5)</label>
+                <div class="upload-zone" onclick="document.getElementById('ripper-files').click()">
+                    <i class="fas fa-plus"></i>
+                    <span>Klik untuk tambah foto</span>
+                </div>
+                <input type="file" id="ripper-files" multiple accept="image/*" style="display: none;" onchange="handleRipperImages(this)">
+                
+                <div id="ripper-preview-container" class="preview-grid"></div>
+
+                <div class="input-group" style="margin-top: 15px;">
+                    <label>Nama Ripper</label>
+                    <input type="text" id="input-ripper-name" placeholder="Nama pelaku...">
+                </div>
+
+                <div class="input-group">
+                    <label>WhatsApp/Tele Ripper</label>
+                    <input type="text" id="input-ripper-contact" placeholder="628xxx / Nama telegram">
+                </div>
+
+                <div class="input-group">
+                    <label>Nominal / Akun Hilang</label>
+                    <input type="text" id="input-ripper-loss" placeholder="Rp xxx / Akun ML...">
+                </div>
+
+                <div class="input-group">
+                    <label>Kronologi (Jelaskan)</label>
+                    <textarea id="input-ripper-case" class="custom-textarea" placeholder="Kronologi singkat..."></textarea>
+                </div>
+
+                <button class="btn-confirm-tool" onclick="submitRipperData()" style="margin-bottom: 0;">KONFIRMASI</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="ripper-detail-modal" class="modal-overlay">
+        <div class="modal-box detail-box">
+            <div class="calc-header">
+                <h3>DETAIL KASUS</h3>
+                <span class="close-calc" onclick="closeRipperDetail()">&times;</span>
+            </div>
+            
+            <div id="detail-content-area">
+                <div class="detail-main-img">
+                    <img id="detail-img-display" src="" alt="Main Evidence">
+                </div>
+
+                <div id="detail-gallery" class="detail-gallery"></div>
+
+                <div class="detail-info">
+                    <h2 id="detail-name">NAMA PELAKU</h2>
+                    <p id="detail-contact" class="info-row"><i class="fab fa-whatsapp"></i> <span>-</span></p>
+                    <p id="detail-loss" class="info-row loss-text"><i class="fas fa-money-bill-wave"></i> <span>-</span></p>
+                    
+                    <div class="detail-divider"></div>
+                    <label style="font-size:12px; font-weight:bold;">Kronologi:</label>
+                    <p id="detail-cron" class="full-desc"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="owner-login-modal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="calc-header">
+                <h3>LOGIN OWNER</h3>
+                <span class="close-calc" onclick="closeOwnerLogin()">&times;</span>
+            </div>
+            <div class="input-group">
+                <label>Email</label>
+                <input type="email" id="owner-email" placeholder="admin@maisshipro.id">
+            </div>
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" id="owner-pass" placeholder="********">
+            </div>
+            <button class="btn-confirm-tool" onclick="checkOwnerLogin()">MASUK</button>
+        </div>
+    </div>
+
+    <div id="owner-dashboard-content" style="display: none; width: 100%; min-height: 100%; justify-content: flex-start; align-items: center; flex-direction: column; padding-top: 20px; padding-bottom: 50px;">
+        <div class="content-box">
+            <h1 class="welcome-text" style="color: #000;">ADMIN SISTEM</h1>
+            
+            <div class="admin-nav-container">
+                <button class="btn-admin-nav" onclick="switchAdminView('info')">
+                    <i class="fas fa-bullhorn"></i> Add Informasi
+                </button>
+                <button class="btn-admin-nav" onclick="switchAdminView('ripper')">
+                    <i class="fas fa-user-shield"></i> Acc Ripper
+                </button>
+            </div>
+
+            <div id="admin-view-info" style="display: none; width: 100%; margin-top: 20px;">
+                <div class="ripper-header" style="justify-content: center;">
+                    <span class="ripper-title">BUAT PENGUMUMAN</span>
+                </div>
+                
+                <div class="input-group">
+                    <label>Isi Informasi</label>
+                    <textarea id="info-message" class="custom-textarea" placeholder="Tulis info untuk user..."></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label>Durasi Tayang</label>
+                    <select id="info-duration" class="tool-input" style="background: #fff;">
+                        <option value="7">1 Minggu</option>
+                        <option value="30">1 Bulan</option>
+                    </select>
+                </div>
+
+                <button class="btn-confirm-tool" onclick="submitAnnouncement()">KONFIRMASI</button>
+                
+                <div style="margin-top: 20px; border-top: 2px dashed #000; padding-top: 10px;">
+                     <h4 style="margin-bottom: 10px;">INFO AKTIF SAAT INI:</h4>
+                     <div id="active-announcement-list"></div>
+                </div>
+            </div>
+
+            <div id="admin-view-ripper" style="display: none; width: 100%; margin-top: 20px;">
+                
+                <div class="ripper-header" style="justify-content: center; background: #ffe4e4; padding: 5px;">
+                    <span class="ripper-title" style="font-size: 16px;">PERMINTAAN PENDING</span>
+                </div>
+                <div id="pending-ripper-list" class="ripper-list-container">
+                    <div class="empty-ripper">Memuat data pending...</div>
+                </div>
+
+                <div class="ripper-header" style="justify-content: center; margin-top: 30px; background: #e4ffeb; padding: 5px;">
+                    <span class="ripper-title" style="font-size: 16px;">DATA SUDAH DI-ACC</span>
+                </div>
+                <div id="approved-ripper-admin-list" class="ripper-list-container" style="background: #fff;">
+                    <div class="empty-ripper">Memuat data approved...</div>
+                </div>
+
+            </div>
+            
+            <button class="btn-cancel" onclick="logoutOwner()" style="margin-top: 20px;">LOGOUT</button>
+        </div>
+    </div>
+
+    <div id="info-popup-modal" class="modal-overlay" style="z-index: 9999;">
+        <div class="modal-box" style="border: 4px solid var(--line-color); max-width: 400px;">
+            <div class="calc-header" style="justify-content: center;">
+                <h3 style="text-transform: uppercase; color: #e11d48;">
+                    <i class="fas fa-bell"></i> INFORMASI
+                </h3>
+            </div>
+            <div id="info-popup-content" style="..."></div>
+            
+            <button class="btn-confirm-tool" onclick="closeInfoPopup()">SAYA MENGERTI</button>
+        </div>
+    </div>
+
+    <script src="settings.js"></script> 
+    <script src="script.js"></script> 
+    <script src="script/payment.js"></script> 
+    <script src="script/tools.js"></script> 
+    <script src="script/ripper.js"></script> 
+</body>
+</html>
